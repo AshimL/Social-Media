@@ -15,7 +15,6 @@ interface CreateFormData {
                    
 
 export const CreateForm = () =>{
-
   const [user] = useAuthState(auth)
   const navigate = useNavigate();
 
@@ -24,14 +23,12 @@ export const CreateForm = () =>{
     description: yup.string().required("You must add a description"),
   });
 
-  const { register, handleSubmit, formState:{errors} } = useForm<CreateFormData>({
+  const { register, handleSubmit, formState:{errors} } =       useForm<CreateFormData>({
     resolver: yupResolver(schema)
   });
+  
 
-
-  const postsRef = collection(db, "posts")
-
-
+  const postsRef = collection(db, "posts");
 
   const onCreatePost = async (data: CreateFormData) =>{
    await addDoc(postsRef, {
@@ -44,6 +41,8 @@ export const CreateForm = () =>{
 
    navigate("/")
   };
+
+
 
   return (
     <form onSubmit={handleSubmit(onCreatePost)}>

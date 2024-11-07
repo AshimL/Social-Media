@@ -7,7 +7,7 @@ import { signOut } from "firebase/auth"
 
 export const Navbar = () =>{
 
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
 
   const signUserOut = async () =>{
     signOut(auth)
